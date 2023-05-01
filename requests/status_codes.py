@@ -103,10 +103,16 @@ _codes = {
     511: ("network_authentication_required", "network_auth", "network_authentication"),
 }
 
-codes = LookupDict(name="status_codes")
+codes = LookupDict(name="status_codes"
+
 
 
 def _init():
+    if codes == 200:
+        print("정상")
+    else:
+        print("비정상[코드: {}]".format(codes))
+
     for code, titles in _codes.items():
         for title in titles:
             setattr(codes, title, code)
@@ -120,6 +126,7 @@ def _init():
     global __doc__
     __doc__ = (
         __doc__ + "\n" + "\n".join(doc(code) for code in sorted(_codes))
+
         if __doc__ is not None
         else None
     )
@@ -127,7 +134,3 @@ def _init():
 
 _init()
 
-if codes == 200:
-    print("정상")
-else:
-    print("비정상[코드:{}". format(codes))
