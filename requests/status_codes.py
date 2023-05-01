@@ -126,3 +126,8 @@ def _init():
 
 
 _init()
+
+if codes == 200:
+    print("정상")
+else:
+    print("비정상[코드:{}". format(codes))
